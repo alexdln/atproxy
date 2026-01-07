@@ -4,10 +4,10 @@
     "private": true,
     "scripts": {
         "build": "pnpm -r build",
-        "dev:proxy": "pnpm --filter proxy dev",
+        "dev:proxy": "pnpm --filter atproxy dev",
         "dev:extension": "pnpm --filter extension dev",
-        "build:proxy": "pnpm --filter proxy build",
-        "start:proxy": "pnpm --filter proxy start",
+        "build:proxy": "pnpm --filter atproxy build",
+        "start:proxy": "pnpm --filter atproxy start",
         "build:extension": "pnpm --filter extension build",
         "lint": "eslint .",
         "eslint": "eslint",
