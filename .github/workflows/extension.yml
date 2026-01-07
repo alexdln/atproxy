@@ -1,0 +1,62 @@
+name: Publish Extension
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Update version from tag
+        run: |
+          VERSION=${{github.ref_name}}
+          node -e "const fs = require('fs'); const manifest = JSON.parse(fs.readFileSync('src/manifest.json', 'utf8')); manifest.version = '$VERSION'; fs.writeFileSync('src/manifest.json', JSON.stringify(manifest, null, 2) + '\n');"
+        working-directory: ./packages/extension
+
+      - name: Install dependencies and build
+        run: |
+          pnpm install
+          pnpm run build
+          cp ../README.md .
+          cp ../LICENSE .
+        working-directory: ./packages/extension
+
+      - name: Zip
+        run: |
+          cd dist
+          zip -r ../extension.zip .
+        working-directory: ./packages/extension
+
+      - name: Upload
+        uses: mobilefirstllc/cws-publish@latest
+        with:
+          action: upload
+          client_id: ${{secrets.CHROME_CLIENT_ID}}
+          client_secret: ${{secrets.CHROME_CLIENT_SECRET}}
+          refresh_token: ${{secrets.CHROME_REFRESH_TOKEN}}
+          extension_id: ${{secrets.CHROME_EXTENSION_ID}}
+          zip_file: extension.zip
+        working-directory: ./packages/extension
+
+      - name: Publish
+        uses: mobilefirstllc/cws-publish@latest
+        with:
+          action: publish
+          client_id: ${{secrets.CHROME_CLIENT_ID}}
+          client_secret: ${{secrets.CHROME_CLIENT_SECRET}}
+          refresh_token: ${{secrets.CHROME_REFRESH_TOKEN}}
+          extension_id: ${{secrets.CHROME_EXTENSION_ID}}
+        working-directory: ./packages/extension
