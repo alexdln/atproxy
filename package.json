@@ -1,0 +1,33 @@
+{
+    "name": "atproxy",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "build": "pnpm -r build",
+        "dev:proxy": "pnpm --filter proxy dev",
+        "dev:extension": "pnpm --filter extension dev",
+        "build:proxy": "pnpm --filter proxy build",
+        "start:proxy": "pnpm --filter proxy start",
+        "build:extension": "pnpm --filter extension build",
+        "lint": "eslint .",
+        "eslint": "eslint",
+        "prepare": "husky"
+    },
+    "lint-staged": {
+        "*.{ts,tsx,js,jsx,json}": [
+            "eslint"
+        ]
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "devDependencies": {
+        "eslint": "9.39.2",
+        "eslint-config-next": "16.1.1",
+        "eslint-config-prettier": "10.1.8",
+        "eslint-plugin-prettier": "5.5.4",
+        "husky": "9.1.7",
+        "prettier": "3.7.4",
+        "typescript-eslint": "8.51.0"
+    }
+}
