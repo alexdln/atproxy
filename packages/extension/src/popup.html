@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      margin: 0;
+      width: 320px;
+      background-color: #212121;
+      color: #fff;
+      user-select: none;
+      font-size: 16px;
+    }
+
+    header,
+    main {
+      padding: 12px 16px;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 0;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    label,
+    button,
+    input[type="checkbox"] {
+      cursor: pointer;
+    }
+
+    input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #828282;
+    }
+
+    .title {
+      font-size: 18px;
+    }
+
+    .toggle {
+      position: relative;
+      width: 40px;
+      height: 24px;
+      display: inline-block;
+    }
+
+    .toggle input {
+      display: none;
+    }
+
+    .slider {
+      position: absolute;
+      inset: 0;
+      background: rgba(12, 12, 12, .5);
+      border: 1px solid rgba(12, 12, 12, .8);
+      border-radius: 999px;
+      transition: 0.2s ease;
+      cursor: pointer;
+    }
+
+    .slider::before {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      left: 3px;
+      top: 3px;
+      background: rgba(255, 255, 255, .8);
+      border: 1px solid rgba(255, 255, 255, .8);
+      border-radius: 50%;
+      transition: 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+    }
+
+    .toggle input:checked+.slider {
+      background: rgba(34, 197, 94, .5);
+      border: 1px solid rgba(34, 197, 94, .8);
+    }
+
+    .toggle input:checked+.slider::before {
+      transform: translateX(16px);
+    }
+
+    .input {
+      display: block;
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: 20px;
+      border: none;
+      background-color: rgba(18, 18, 18, .5);
+      border: 1px solid rgba(18, 18, 18, .8);
+      color: #fff;
+      font-size: inherit;
+    }
+
+    .label {
+      margin-bottom: 2px;
+      color: #bbbbbb;
+      font-size: 14px;
+    }
+
+    .status {
+      padding: 8px 16px;
+      background-color: rgba(18, 18, 18, .5);
+      border-top: 1px solid #828282;
+    }
+
+    #message:not(:empty) {
+      margin-top: 12px;
+    }
+
+    .save-button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: 20px;
+      border: none;
+      background-color: #1976d2;
+      color: #fff;
+      font-size: inherit;
+      font-weight: 500;
+    }
+
+    .save-button:hover {
+      background-color: #1565c0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 class="title">Atproxy</h1>
+    <label class="toggle" for="enable">
+      <input type="checkbox" id="enable" name="enable" />
+      <span class="slider"></span>
+    </label>
+  </header>
+  <main>
+    <form id="form">
+      <div class="form-group">
+        <label for="rule">
+          <p class="label">
+            Proxyfying rule
+          </p>
+          <input class="input" type="text" id="rule" name="rule" value="^.*/xrpc/">
+        </label>
+      </div>
+      <button type="submit" id="save" class="save-button">Save Settings</button>
+    </form>
+    <div id="message"></div>
+  </main>
+  <footer>
+    <div id="status" class="status">
+      <span class="status-indicator"></span>
+      <span id="statusText">Not started</span>
+    </div>
+  </footer>
+  <script src="popup.js"></script>
+</body>
+
+</html>

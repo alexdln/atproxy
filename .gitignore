@@ -3,6 +3,5 @@ dist/
 *.log
 .DS_Store
 .env
-.atsky-cli.json
 packages/*/node_modules/
 packages/*/dist/
