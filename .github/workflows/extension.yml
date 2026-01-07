@@ -48,8 +48,7 @@ jobs:
           client_secret: ${{secrets.CHROME_CLIENT_SECRET}}
           refresh_token: ${{secrets.CHROME_REFRESH_TOKEN}}
           extension_id: ${{secrets.CHROME_EXTENSION_ID}}
-          zip_file: extension.zip
-        working-directory: ./packages/extension
+          zip_file: packages/extension/extension.zip
 
       - name: Publish
         uses: mobilefirstllc/cws-publish@latest
@@ -59,4 +58,3 @@ jobs:
           client_secret: ${{secrets.CHROME_CLIENT_SECRET}}
           refresh_token: ${{secrets.CHROME_REFRESH_TOKEN}}
           extension_id: ${{secrets.CHROME_EXTENSION_ID}}
-        working-directory: ./packages/extension
