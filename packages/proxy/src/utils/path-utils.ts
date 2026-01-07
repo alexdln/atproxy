@@ -18,7 +18,7 @@ export const checkIsProcedurePath = (path: string): boolean => {
 };
 
 export const parseQueryParams = (url: string): Record<string, string | string[]> => {
-    const urlObj = new URL(url, `http://localhost:8080`);
+    const urlObj = new URL(url, `http://localhost`);
     const params: Record<string, string | string[]> = {};
     urlObj.searchParams.forEach((value, key) => {
         const existing = params[key];

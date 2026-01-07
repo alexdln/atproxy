@@ -8,7 +8,7 @@ import { sendJson } from "../utils/http-utils";
 
 export const createRequestHandler = (config: ServerConfig) => {
     return async (req: IncomingMessage, res: ServerResponse): Promise<void> => {
-        const url = new URL(req.url || "", `http://localhost:8080`);
+        const url = new URL(req.url || "", `http://localhost`);
         const path = parsePath(url.pathname || "");
 
         if (path === null) {

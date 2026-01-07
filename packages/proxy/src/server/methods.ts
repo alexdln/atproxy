@@ -11,6 +11,7 @@ export const GET = async (
     config: ServerConfig,
 ): Promise<void> => {
     if (!checkIsQueryPath(path) || !config.permissions.includes(path)) {
+        console.log("Blocked request: ", path);
         return sendJson(res, 400, {});
     }
 
@@ -20,6 +21,7 @@ export const GET = async (
             if (!config.did) return sendJson(res, 200, null);
             params.actor = config.did;
         }
+        delete params.lang;
         const response = await config.agent.call(path, params);
         return sendJson(res, 200, response.data);
     } catch (e) {

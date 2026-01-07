@@ -8,7 +8,7 @@ import { createServer } from "./server/server";
 import { authenticate } from "./config/auth";
 import { promptHandle, promptPassword, promptPermissions } from "./config/prompts";
 
-const DEFAULT_PORT = 8080;
+const DEFAULT_PORT = 9523;
 
 const main = async (): Promise<void> => {
     const config = await loadConfig();
