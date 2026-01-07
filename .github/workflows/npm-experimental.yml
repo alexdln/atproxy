@@ -28,8 +28,8 @@ jobs:
         run: |
           pnpm install
           pnpm run build
-          cp ../README.md .
-          cp ../LICENSE .
+          cp ../../README.md .
+          cp ../../LICENSE .
         working-directory: ./packages/proxy
 
       - name: Compute experimental version
