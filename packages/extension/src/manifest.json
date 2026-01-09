@@ -4,8 +4,7 @@
   "version": "1.0.0",
   "description": "Proxies /xrpc requests from atproto app to your local backend",
   "permissions": [
-    "storage",
-    "scripting"
+    "storage"
   ],
   "host_permissions": [
     "http://localhost:9523/*"

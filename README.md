@@ -4,6 +4,21 @@
 
 Atproxy is a privacy-first browser extension and local proxy server that gives you complete control over XRPC requests from atproto applications. Intercept, filter, and manage all XRPC traffic through your own local server, keeping session data and sensitive information entirely under your control.
 
+## Usage
+
+1. Run local server
+
+```bash
+npx atproxy
+```
+
+2. In the questions, enter handle, password and permissions
+
+3. If the service does not have additional support, enable the extension
+
+4. Own your data and experience even more
+
+
 ## Overview
 
 Atproxy consists of two components working together:
