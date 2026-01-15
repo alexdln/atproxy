@@ -7,7 +7,7 @@ export const DEFAULT_PORT = 9523;
 export const DEFAULT_RULE = "^.*/xrpc/";
 
 export const getConfig = async (): Promise<ExtensionConfig> => {
-    const result = await chrome.storage.sync.get(["enabled", "rule"]);
+    const result = await chrome.storage.local.get(["enabled", "rule"]);
     return {
         enabled: result.enabled !== undefined ? (result.enabled as boolean) : false,
         rule: (result.rule as string) || DEFAULT_RULE,
@@ -15,5 +15,5 @@ export const getConfig = async (): Promise<ExtensionConfig> => {
 };
 
 export const saveConfig = async (config: Partial<ExtensionConfig>): Promise<void> => {
-    await chrome.storage.sync.set(config);
+    await chrome.storage.local.set(config);
 };
