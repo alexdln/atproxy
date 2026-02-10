@@ -14,6 +14,8 @@
 
 ⬆️ H3 MD heading
 
-<h4>**How it workds**</h4>
+<h4>
+**How it workds**
+</h4>
 
 ⬆️ H4 HTML heading
